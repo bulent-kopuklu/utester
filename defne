@@ -1,0 +1,59 @@
+import os
+
+prj = Project("utester")
+prj.version = "1.0.1"
+
+def configure(cntx):
+    cntx.import_tool("gxx")
+
+def build(cntx):
+    app = cntx.gxx.exe(
+                "utester",
+                sources=[
+                    "src/lib/Object.cpp",
+                    "src/lib/Scope.cpp",
+                    "src/lib/Suit.cpp",
+                    "src/exec/TestExecuter.cpp",
+                    "src/exec/ScopeExecuter.cpp",
+#                     "src/exec/SuitExecuter.cpp",
+#                     "src/Logger.cpp",
+                    "src/util.cpp",
+                    "src/Output.cpp",
+                    "src/TestEngine.cpp",
+                    "src/main.cpp",
+
+                    ],
+                cc_flags=["-fPIC"],
+                include_dirs = [
+                    "include",
+                    "src"    
+                    ],
+                ld_flags=["-rdynamic"],
+                libraries=[
+                    cntx.gxx.mklib("dl")
+                    ]
+                )
+    cntx.add_file_object(app)
+
+def test(cntx):
+    cntx.gxx.so(
+            "test-impl.so",
+            sources=[
+                "test/TestSuit.cpp",
+                ],
+            cc_flags=["-fPIC"],
+            include_dirs = [
+                "include",
+                "test"    
+                ]
+            )
+        
+def package(cntx):
+    obj = cntx.pkg_object()
+    obj.add_file(cntx.get_file_object("utester"), "/usr/bin/")
+    pkg = cntx.make_pkg(obj)
+    
+    dev = cntx.pkg_object()
+    dev.add_file("include/*", "/usr/include")
+    cntx.make_devel(pkg, dev)
+
