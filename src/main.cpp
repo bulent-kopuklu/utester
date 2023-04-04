@@ -46,7 +46,8 @@ int main(int argc, char* argv[])
     utester::Args args;
 
     int ch;
-    while ((ch = getopt(argc, argv, "i:o:h")) != -1)
+//    while ((ch = getopt(argc, argv, "i:o:h")) != -1)
+    while ((ch = getopt(argc, argv, "o:h")) != -1)
     {
         switch (ch)
         {

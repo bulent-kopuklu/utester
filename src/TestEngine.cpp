@@ -60,22 +60,23 @@ public:
 
 void run(Args const& argv)
 {
-    void* pvh = dlopen(argv.impl.c_str(), RTLD_GLOBAL|RTLD_LAZY);
-    if (pvh == NULL)
-        throw std::invalid_argument(dlerror());
+    // void* pvh = dlopen(argv.impl.c_str(), RTLD_GLOBAL|RTLD_LAZY);
+    // if (pvh == NULL)
+    //     throw std::invalid_argument(dlerror());
 
-    typedef Suit* (*CreatorPtr)();
-    CreatorPtr ptr = (CreatorPtr) dlsym(pvh, "CreateSuit");
-    if (NULL == ptr)
-        throw std::runtime_error(dlerror());
-    Suit* pSuit = (*ptr)();
+    // typedef Suit* (*CreatorPtr)();
+    // CreatorPtr ptr = (CreatorPtr) dlsym(pvh, "CreateSuit");
+    // if (NULL == ptr)
+    //     throw std::runtime_error(dlerror());
+    // Suit* pSuit = (*ptr)();
+    Suit* pSuit = CreateSuit();
     if (NULL == pSuit)
         throw std::runtime_error("suit is null");
 
     try
     {
         TestEngine().run(pSuit, argv.object);
-   }
+    }
     catch (std::exception& e)
     {
         throw;
