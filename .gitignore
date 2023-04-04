@@ -1,5 +1,6 @@
 .depfs/
 target/
+build
 .cproject
 .project
 .pydevproject
