@@ -80,6 +80,10 @@ int main(int argc, char* argv[])
     {
         std::cerr << std::endl << KRED << KBOLD << "error -> " << e.what() << KNRM << std::endl << std::endl;
     }
+    catch (...) 
+    {
+        std::cerr << std::endl << KRED << KBOLD << "undefined error " << KNRM << std::endl << std::endl;
+    }
 
 
     return 0;
