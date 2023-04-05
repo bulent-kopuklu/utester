@@ -68,6 +68,9 @@ class Suit :
     virtual std::string getName() const;
 };
 
+int main(int argc, char* argv[]);
+
+
 }
 
 extern "C" {

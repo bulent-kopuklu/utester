@@ -23,6 +23,8 @@
 #include "stdafx.h"
 #include "TestEngine.h"
 
+namespace utester {
+
 
 void signalhandler(int sig)
 {
@@ -83,3 +85,4 @@ int main(int argc, char* argv[])
     return 0;
 }
 
+}
