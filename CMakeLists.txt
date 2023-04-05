@@ -22,10 +22,12 @@ add_library(
     )
 
 target_include_directories(utester PUBLIC include)
-target_link_libraries(utester)
+set_target_properties(utester PROPERTIES PUBLIC_HEADER include/utester.h)
+#target_link_libraries(utester)
 
+include(GNUInstallDirs)
 install(
     TARGETS ${PROJECT_NAME} 
-    CONFIGURATIONS Debug
-    LIBRARY
+    PUBLIC_HEADER
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 )
