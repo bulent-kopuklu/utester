@@ -65,11 +65,11 @@ int main(int argc, char* argv[])
         }
     }
 
-    if (args.impl.empty())
-    {
-        usage();
-        return -1;
-    }
+    // if (args.impl.empty())
+    // {
+    //     usage();
+    //     return -1;
+    // }
 
 
     try
