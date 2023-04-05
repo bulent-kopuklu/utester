@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-include_directories(src)
+include_directories(src include)
 
 add_library(
     utester
@@ -25,12 +25,8 @@ add_library(
 #target_link_libraries(utester)
 set_target_properties(utester PROPERTIES PUBLIC_HEADER include/utester.h)
 
-include.h(
 install(
-    ${PROJECT_NAME} 
-    ARCHIVE
-    PUBLIC_HEADER
-    
+    TARGETS ${PROJECT_NAME} ARCHIVE PUBLIC_HEADER    
 )
 
 # install(
