@@ -27,11 +27,15 @@ target_link_libraries(utester)
 #include(GNUInstallDirs)
 install(
     TARGETS ${PROJECT_NAME} 
-    DESTINATION ${CMAKE_INSTALL_PREFIX}/utester
+    ARCHIVE
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/utester
+    PUBLIC_HEADER
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/utester
 )
 
-install(
-    FILES 
-    include/utester.h
-    DESTINATION ${CMAKE_INSTALL_PREFIX}/utester
-)
+# install(
+#     FILES 
+#     include/utester.h
+#     PUBLIC_HEADER
+#     DESTINATION ${CMAKE_INSTALL_PREFIX}/utester
+# )
