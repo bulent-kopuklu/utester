@@ -23,3 +23,5 @@ add_library(
 
 target_include_directories(utester PUBLIC include)
 target_link_libraries(utester)
+
+install(TARGETS ${PROJECT_NAME} LIBRARY DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
