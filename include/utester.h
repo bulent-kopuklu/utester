@@ -35,9 +35,9 @@ public:
     virtual std::string getName() const = 0;
 
 public:
-    virtual void ctor();
-    virtual void dtor();
-    virtual ~Object();
+    virtual void ctor() {}
+    virtual void dtor() {}
+    virtual ~Object() {}
 };
 
 class Test :
@@ -55,24 +55,32 @@ class Scope :
 {
     ObjectList m_lstObjects;
 public:
-    virtual void addChildObject(Object* pObj);
-    virtual ObjectList const& getChildObjects() const;
+    virtual void addChildObject(Object* pObj) {
+        m_lstObjects.push_back(pObj);        
+    }
+    virtual ObjectList const& getChildObjects() const {
+        return m_lstObjects;        
+    }
 
 public:
-    virtual ~Scope();
+    virtual ~Scope() {
+        for (auto p : m_lstObjects)
+            delete p;
+
+        m_lstObjects.clear();
+
+    }
 };
 
 class Suit :
     public Scope
 {
-    virtual std::string getName() const;
+    virtual std::string getName() const {
+        return "Suit";
+    }
 };
 
 int start(int argc, char* argv[]);
-
-template<class _Ty>
-Object* createObject();
-
 
 }
 

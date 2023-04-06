@@ -10,9 +10,6 @@ include_directories(src include)
 add_library(
     utester
     STATIC
-    "src/lib/Object.cpp"
-    "src/lib/Scope.cpp"
-    "src/lib/Suit.cpp"
     "src/exec/TestExecuter.cpp"
     "src/exec/ScopeExecuter.cpp"
     "src/util.cpp"
