@@ -75,6 +75,7 @@ public:
 class Suit :
     public Scope
 {
+public:
     virtual std::string getName() const {
         return "Suit";
     }
