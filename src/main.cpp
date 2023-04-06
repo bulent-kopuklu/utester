@@ -36,7 +36,7 @@ void usage()
 
 }
 
-int main(int argc, char* argv[])
+int start(int argc, char* argv[])
 {
 //    signal(SIGABRT, signalhandler);
 //    signal(SIGFPE, signalhandler);
