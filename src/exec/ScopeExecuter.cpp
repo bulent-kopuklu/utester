@@ -24,7 +24,7 @@
 #include "ScopeExecuter.h"
 
 ScopeExecuter::ScopeExecuter(utester::Scope* pScope, std::string const& strOwner) :
-    Executer(pScope->getName(), strOwner),
+    Executer(pScope->name, strOwner),
     m_pScope(pScope)
 {
 }
@@ -98,7 +98,7 @@ utester::Object* ScopeExecuter::getChildObjectByName(std::string const& name)
     for (uint i = 0; i < objs.size(); ++i)
     {
         utester::Object* pObj = objs[i];
-        if (pObj->getName() == name)
+        if (pObj->name == name)
         {
             return pObj;
         }

@@ -29,55 +29,61 @@
 
 namespace utester {
 
-class Object
-{
+class Object {
 public:
-    virtual std::string getName() const = 0;
+    std::string name;
 
-public:
     virtual void ctor() {}
     virtual void dtor() {}
     virtual ~Object() {}
+
+protected:
+    Object (std::string const& n) : name(n) {}
 };
 
-class Test :
-    public Object
-{
+class Test : public Object {
 public:
+    std::string description;
+
     virtual void run() = 0;
-    virtual std::string getDescription() const = 0;
+
+protected:
+    Test(std::string n, std::string d) : 
+        Object(n), description(d) {
+    }
 };
 
 typedef std::vector<Object*> ObjectList;
 
-class Scope :
-    public Object
-{
+class Scope : public Object {
     ObjectList m_lstObjects;
+
 public:
     virtual void addChildObject(Object* pObj) {
         m_lstObjects.push_back(pObj);        
     }
+
     virtual ObjectList const& getChildObjects() const {
         return m_lstObjects;        
     }
 
-public:
     virtual ~Scope() {
         for (auto p : m_lstObjects)
             delete p;
 
         m_lstObjects.clear();
-
     }
+
+protected:
+    Scope(std::string const& n) : Object(n) {
+    }
+
 };
 
-class Suit :
-    public Scope
-{
-public:
-    virtual std::string getName() const {
-        return "Suit";
+class Suit : public Scope {
+protected:
+    Suit(std::string const& n) : Scope(n) {
+
     }
 };
 

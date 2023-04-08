@@ -24,7 +24,7 @@
 #include "TestExecuter.h"
 
 TestExecuter::TestExecuter(utester::Test* pTest, std::string const& strScopeName) :
-    Executer(pTest->getName(), strScopeName),
+    Executer(pTest->name, strScopeName),
     m_pTest(pTest)
 {
 
@@ -41,7 +41,7 @@ utester::Object* TestExecuter::getObject() const
 
 void TestExecuter::run()
 {
-    tbegin1(getName(), m_pTest->getDescription());
+    tbegin1(getName(), m_pTest->description);
 
     if (!ctor())
         return;
