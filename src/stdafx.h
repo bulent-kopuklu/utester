@@ -23,7 +23,6 @@
 #ifndef stdafx_h__
 #define stdafx_h__
 
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <memory.h>
@@ -47,16 +46,5 @@
 //#include "Logger.h"
 
 #include "utester.h"
-
-#if defined(ANDROID)
-#   include <android/log.h>
-#   define LOG_TAG "mwg"
-#   define lprint(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
-#   define lerror(...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, __VA_ARGS__)
-#else
-#   define LOG_TAG "mwg"
-#   define lprint(...) fprintf(stdout, __VA_ARGS__)
-#   define lerror(...) fprintf(stderr, __VA_ARGS__)
-#endif
 
 #endif /* stdafx_h__ */

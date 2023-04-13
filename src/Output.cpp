@@ -39,26 +39,26 @@ void title(std::string const& strName, char ch = '-')
     uint len = (80 - strName.length()) / 2;
     std::string s(len, ch);
 //    std::cout << s;
-    lprint("%s", s.c_str());
+    utprint("%s", s.c_str());
 
     if (!strName.empty())
     {
 //         std::cout << strName;
-         lprint("%s", strName.c_str());
+         utprint("%s", strName.c_str());
     }
 
 //    std::cout << s;
-    lprint("%s", s.c_str());
+    utprint("%s", s.c_str());
     uint len2 = (len*2) + strName.length();
     if (len2 < len)
     {
         std::string s2(len2, ch);
 //        std::cout << s2;
-        lprint("%s", s2.c_str());
+        utprint("%s", s2.c_str());
     }
 
 //    std::cout << std::endl;
-    lprint("\n");
+    utprint("\n");
 }
 
 void stat(exec::Statistics* ps, bool fIsBold = false)
@@ -66,13 +66,13 @@ void stat(exec::Statistics* ps, bool fIsBold = false)
     if (!ps->isSuccess())
     {
     //    std::cout << KRED;
-        lprint("%s", KRED);
+        utprint("%s", KRED);
     }
 
     if (fIsBold)
     {
         // std::cout << KBOLD;
-        lprint("%s", KBOLD);
+        utprint("%s", KBOLD);
     }
 
     // std::cout << std::setw(53) << std::left << name(ps->getName()) << " ";
@@ -80,7 +80,7 @@ void stat(exec::Statistics* ps, bool fIsBold = false)
     // std::cout << std::setw(8) << std::left << ((float)ps->getDtorTime() / 10000.0) << " ";
     // std::cout << std::setw(8) << std::left << ((float)ps->getRunTime() / 1000.0);
 
-    lprint("%-53s %-8f %-8f %-8f", 
+    utprint("%-53s %-8f %-8f %-8f", 
         name(ps->getName()).c_str(),
         ((float)ps->getCtorTime() / 1000.0),
         ((float)ps->getDtorTime() / 10000.0),
@@ -88,7 +88,7 @@ void stat(exec::Statistics* ps, bool fIsBold = false)
         );
 
 //    std::cout << KNRM << std::endl;
-    lprint("%s\n", KNRM);
+    utprint("%s\n", KNRM);
 
 }
 
@@ -152,9 +152,9 @@ TestResult sstat(ScopeExecuter* pScope)
     // std::cout << "success:" << (t-f) << std::endl;
     // std::cout << "failed :" << f << std::endl;
 
-    lprint("total:%d\n", t);
-    lprint("success:%d\n", (t-f));
-    lprint("failed:%d\n", f); 
+    utprint("total:%d\n", t);
+    utprint("success:%d\n", (t-f));
+    utprint("failed:%d\n", f); 
 
     return TestResult(t, f);
 }
@@ -182,11 +182,11 @@ void printScopeStat(ScopeExecuter* pSuit)
     // std::cout << "failed :" << uFailed << std::endl;
     // std::cout << KNRM;
 
-    lprint("KBOLD");
-    lprint("total:%d\n", uTotal);
-    lprint("success:%d\n", (uTotal-uFailed));
-    lprint("failed:%d\n", uFailed); 
-    lprint("KNORM");
+    utprint("KBOLD");
+    utprint("total:%d\n", uTotal);
+    utprint("success:%d\n", (uTotal-uFailed));
+    utprint("failed:%d\n", uFailed); 
+    utprint("KNORM");
 
 
     //    exec::Statistics::Childs const& lst = pSuit->getChilds();

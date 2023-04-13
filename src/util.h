@@ -38,17 +38,17 @@
 
 
 #define tbegin0(_n) \
-    tlog(KBOLD << KBLU << _n)
+    utlog(KBOLD << KBLU << _n)
 
 #define tbegin1(_n, _d) \
-    tlog(KBOLD << KBLU << _n << KNRM << " -> " << _d)
+    utlog(KBOLD << KBLU << _n << KNRM << " -> " << _d)
 
 // KBOLD << KBLU << _s << "::" << _t <<
 #define tsuccess(_n, _m, _t) \
-    tlog(KBLU << _n << "." << _m << KGRN << " completed ... duration:" << _t << " ms."<<  KNRM)
+    utlog(KBLU << _n << "." << _m << KGRN << " completed ... duration:" << _t << " ms."<<  KNRM)
 
 #define terror(_n, _m, _e) \
-    tlog(KBLU << _n << "." << _m << KRED << " completed with error !!! err:" << _e << KNRM)
+    utlog(KBLU << _n << "." << _m << KRED << " completed with error !!! err:" << _e << KNRM)
 
 namespace exec {
 class Statistics;
