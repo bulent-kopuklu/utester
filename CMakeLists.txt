@@ -7,16 +7,16 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 include_directories(src include)
 
-message("CMAKE_COMMAND:                 ${CMAKE_COMMAND}")
-message("CMAKE_BUILD_TYPE:              ${CMAKE_BUILD_TYPE}")
-message("CMAKE_MAKE_PROGRAM:            ${CMAKE_MAKE_PROGRAM}")
-message("CMAKE_CXX_FLAGS_DEBUG:         ${CMAKE_CXX_FLAGS_DEBUG}")
-message("CMAKE_CXX_FLAGS_RELEASE:       ${CMAKE_CXX_FLAGS_RELEASE}")
-message("CMAKE_CXX_FLAGS_RELWITHDEBINFO:${CMAKE_CXX_FLAGS_RELWITHDEBINFO}")
-message("CMAKE_CXX_FLAGS:               ${CMAKE_CXX_FLAGS}")
-message("CMAKE_TOOLCHAIN_FILE:          ${CMAKE_TOOLCHAIN_FILE}")
-message("ANDROID_PLATFORM:              ${ANDROID_PLATFORM}")
-message("CMAKE_EXTERNAL_ARGS:           ${CMAKE_EXTERNAL_ARGS}")
+# message("CMAKE_COMMAND:                 ${CMAKE_COMMAND}")
+# message("CMAKE_BUILD_TYPE:              ${CMAKE_BUILD_TYPE}")
+# message("CMAKE_MAKE_PROGRAM:            ${CMAKE_MAKE_PROGRAM}")
+# message("CMAKE_CXX_FLAGS_DEBUG:         ${CMAKE_CXX_FLAGS_DEBUG}")
+# message("CMAKE_CXX_FLAGS_RELEASE:       ${CMAKE_CXX_FLAGS_RELEASE}")
+# message("CMAKE_CXX_FLAGS_RELWITHDEBINFO:${CMAKE_CXX_FLAGS_RELWITHDEBINFO}")
+# message("CMAKE_CXX_FLAGS:               ${CMAKE_CXX_FLAGS}")
+# message("CMAKE_TOOLCHAIN_FILE:          ${CMAKE_TOOLCHAIN_FILE}")
+# message("ANDROID_PLATFORM:              ${ANDROID_PLATFORM}")
+# message("CMAKE_EXTERNAL_ARGS:           ${CMAKE_EXTERNAL_ARGS}")
 
 
 add_library(
