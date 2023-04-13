@@ -38,41 +38,45 @@ void title(std::string const& strName, char ch = '-')
 {
     uint len = (80 - strName.length()) / 2;
     std::string s(len, ch);
+
+    std::ostringstream pos;
+
 //    std::cout << s;
-    utprint("%s", s.c_str());
+    pos << s;
 
     if (!strName.empty())
     {
 //         std::cout << strName;
-         utprint("%s", strName.c_str());
+        pos << strName;
     }
 
 //    std::cout << s;
-    utprint("%s", s.c_str());
+    pos << s;
     uint len2 = (len*2) + strName.length();
     if (len2 < len)
     {
         std::string s2(len2, ch);
 //        std::cout << s2;
-        utprint("%s", s2.c_str());
+        pos << s2;
     }
 
 //    std::cout << std::endl;
-    utprint("\n");
+    utprint("%s", pos.str().c_str());
 }
 
 void stat(exec::Statistics* ps, bool fIsBold = false)
 {
+    std::ostringstream pos;
     if (!ps->isSuccess())
     {
     //    std::cout << KRED;
-        utprint("%s", KRED);
+        pos << KRED;
     }
 
     if (fIsBold)
     {
         // std::cout << KBOLD;
-        utprint("%s", KBOLD);
+        pos << KBOLD;
     }
 
     // std::cout << std::setw(53) << std::left << name(ps->getName()) << " ";
@@ -80,15 +84,14 @@ void stat(exec::Statistics* ps, bool fIsBold = false)
     // std::cout << std::setw(8) << std::left << ((float)ps->getDtorTime() / 10000.0) << " ";
     // std::cout << std::setw(8) << std::left << ((float)ps->getRunTime() / 1000.0);
 
-    utprint("%-53s %-8f %-8f %-8f", 
-        name(ps->getName()).c_str(),
-        ((float)ps->getCtorTime() / 1000.0),
-        ((float)ps->getDtorTime() / 10000.0),
-        ((float)ps->getRunTime() / 1000.0)
-        );
+    pos << std::setw(53) << std::left << name(ps->getName()) << " ";
+    pos << std::setw(8) << std::left << ((float)ps->getCtorTime() / 1000.0) << " ";
+    pos << std::setw(8) << std::left << ((float)ps->getDtorTime() / 10000.0) << " ";
+    pos << std::setw(8) << std::left << ((float)ps->getRunTime() / 1000.0);
 
 //    std::cout << KNRM << std::endl;
-    utprint("%s\n", KNRM);
+    pos << KNRM << std::endl;
+    utprint("%s", pos.str().c_str());
 
 }
 
@@ -152,9 +155,11 @@ TestResult sstat(ScopeExecuter* pScope)
     // std::cout << "success:" << (t-f) << std::endl;
     // std::cout << "failed :" << f << std::endl;
 
-    utprint("total:%d\n", t);
-    utprint("success:%d\n", (t-f));
-    utprint("failed:%d\n", f); 
+    std::ostringstream pos;
+    pos << "total  :" << t << std::endl;
+    pos << "success:" << (t-f) << std::endl;
+    pos << "failed :" << f << std::endl;
+    utprint("%s", pos.str().c_str());
 
     return TestResult(t, f);
 }
@@ -182,13 +187,14 @@ void printScopeStat(ScopeExecuter* pSuit)
     // std::cout << "failed :" << uFailed << std::endl;
     // std::cout << KNRM;
 
-    utprint("KBOLD");
-    utprint("total:%d\n", uTotal);
-    utprint("success:%d\n", (uTotal-uFailed));
-    utprint("failed:%d\n", uFailed); 
-    utprint("KNORM");
+    std::ostringstream pos;
+    pos << KBOLD;
+    pos << "total  :" << uTotal << std::endl;
+    pos << "success:" << (uTotal-uFailed) << std::endl;
+    pos << "failed :" << uFailed << std::endl;
+    pos << KNRM;
 
-
+    utprint("%s", pos.str().c_str());
     //    exec::Statistics::Childs const& lst = pSuit->getChilds();
 //    exec::Statistics::Childs::const_iterator its;
 //    for (its = lst.begin(); its != lst.end(); ++its)

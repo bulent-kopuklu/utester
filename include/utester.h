@@ -35,12 +35,12 @@
 #   define utprint(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
 #   define uterror(...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, __VA_ARGS__)
 #else
-#   define utprint(...) fprintf(stdout, __VA_ARGS__)
-#   define uterror(...) fprintf(stderr, __VA_ARGS__)
+#   define utprint(...) fprintf(stdout, __VA_ARGS__); fprintf(stdout, "\n")
+#   define uterror(...) fprintf(stderr, __VA_ARGS__); fprintf(stderr, "\n")
 #endif
 
 #define utlog(__x__) \
-    utprint("%s\n", (((std::ostringstream &)(std::ostringstream().seekp(0, std::ios_base::cur) << __x__)).str()).c_str())
+    utprint("%s", (((std::ostringstream &)(std::ostringstream().seekp(0, std::ios_base::cur) << __x__)).str()).c_str())
     // std::cout << (((std::ostringstream &)(std::ostringstream().seekp(0, std::ios_base::cur) << __x__)).str()) << std::endl
 
 

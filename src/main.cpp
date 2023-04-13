@@ -29,7 +29,7 @@ namespace utester {
 void signalhandler(int sig)
 {
 //    std::cout << "signal -> " << sig << std::endl;
-    uterror("signal: %d\n", sig);
+    uterror("signal: %d", sig);
 }
 
 void usage()
