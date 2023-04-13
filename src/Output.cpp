@@ -80,8 +80,8 @@ void stat(exec::Statistics* ps, bool fIsBold = false)
     // std::cout << std::setw(8) << std::left << ((float)ps->getDtorTime() / 10000.0) << " ";
     // std::cout << std::setw(8) << std::left << ((float)ps->getRunTime() / 1000.0);
 
-    lprint("%53s %8f %8f %8f", 
-        name(ps->getName().c_str()),
+    lprint("%-53s %-8f %-8f %-8f", 
+        name(ps->getName()).c_str(),
         ((float)ps->getCtorTime() / 1000.0),
         ((float)ps->getDtorTime() / 10000.0),
         ((float)ps->getRunTime() / 1000.0)
