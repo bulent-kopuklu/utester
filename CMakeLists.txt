@@ -30,8 +30,9 @@ add_library(
     "src/main.cpp"
     )
 
-#target_include_directories(utester PUBLIC include)
-#target_link_libraries(utester)
+target_include_directories(utester PUBLIC include)
+target_link_libraries(utester)
+
 set_target_properties(utester PROPERTIES PUBLIC_HEADER include/utester.h)
 
 install(
