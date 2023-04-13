@@ -48,7 +48,7 @@ public:
         if (m_fIsConstructed)
             return true;
         // std::cout << KACCORD;
-        utprint(KACCORD);
+
         std::string strError;
         long b = util::tick();
 
@@ -64,7 +64,7 @@ public:
         setCtorTime(util::timespan(b));
 
         // std::cout << KNRM;
-        utprint(KNRM);
+
         if (!strError.empty())
         {
             markSuccess(false);
@@ -91,7 +91,6 @@ public:
             ((Executer*)lst[i])->dtor();
 
         // std::cout << KACCORD;
-        utprint(KACCORD);
         std::string strError;
 
         long b = util::tick();
@@ -108,7 +107,6 @@ public:
         setDtorTime(util::timespan(b));
 
         // std::cout << KNRM;
-        utprint(KNRM);
         if (!strError.empty())
         {
             terror(getName(), "dtor()", strError);
