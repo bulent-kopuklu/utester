@@ -23,32 +23,37 @@
 #ifndef util_h__
 #define util_h__
 
-#define KBOLD  "\x1B[1m"
-#define KACCORD "\x1B[2m"
-#define KULINE "\x1B[4m"
+// #define KBOLD  "\x1B[1m"
+// #define KACCORD "\x1B[2m"
+// #define KULINE "\x1B[4m"
 
-#define KNRM  "\x1B[0m"
-#define KRED  "\x1B[31m"
-#define KGRN  "\x1B[32m"
-#define KYEL  "\x1B[33m"
-#define KBLU  "\x1B[34m"
-#define KMAG  "\x1B[35m"
-#define KCYN  "\x1B[36m"
-#define KWHT  "\x1B[37m"
+// #define KNRM  "\x1B[0m"
+// #define KRED  "\x1B[31m"
+// #define KGRN  "\x1B[32m"
+// #define KYEL  "\x1B[33m"
+// #define KBLU  "\x1B[34m"
+// #define KMAG  "\x1B[35m"
+// #define KCYN  "\x1B[36m"
+// #define KWHT  "\x1B[37m"
 
 
 #define tbegin0(_n) \
-    utlog(KBOLD << KBLU << _n)
+    utlog(_n)
+//    utlog(KBOLD << KBLU << _n)
+
 
 #define tbegin1(_n, _d) \
-    utlog(KBOLD << KBLU << _n << KNRM << " -> " << _d)
+    utlog(_n << " -> " << _d)
+//    utlog(KBOLD << KBLU << _n << KNRM << " -> " << _d)
 
 // KBOLD << KBLU << _s << "::" << _t <<
 #define tsuccess(_n, _m, _t) \
-    utlog(KBLU << _n << "." << _m << KGRN << " completed ... duration:" << _t << " ms."<<  KNRM)
+    utlog(_n << "." << _m << " completed ... duration:" << _t << " ms.")
+//    utlog(KBLU << _n << "." << _m << KGRN << " completed ... duration:" << _t << " ms."<<  KNRM)
 
 #define terror(_n, _m, _e) \
-    utlog(KBLU << _n << "." << _m << KRED << " completed with error !!! err:" << _e << KNRM)
+    utlog(_n << "." << _m << " completed with error !!! err:" << _e)
+//    utlog(KBLU << _n << "." << _m << KRED << " completed with error !!! err:" << _e << KNRM)
 
 namespace exec {
 class Statistics;

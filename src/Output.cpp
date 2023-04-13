@@ -70,13 +70,13 @@ void stat(exec::Statistics* ps, bool fIsBold = false)
     if (!ps->isSuccess())
     {
     //    std::cout << KRED;
-        pos << KRED;
+//        pos << KRED;
     }
 
     if (fIsBold)
     {
         // std::cout << KBOLD;
-        pos << KBOLD;
+//        pos << KBOLD;
     }
 
     // std::cout << std::setw(53) << std::left << name(ps->getName()) << " ";
@@ -90,7 +90,7 @@ void stat(exec::Statistics* ps, bool fIsBold = false)
     pos << std::setw(8) << std::left << ((float)ps->getRunTime() / 1000.0);
 
 //    std::cout << KNRM << std::endl;
-    pos << KNRM << std::endl;
+//    pos << KNRM << std::endl;
     utprint("%s", pos.str().c_str());
 
 }
@@ -188,11 +188,11 @@ void printScopeStat(ScopeExecuter* pSuit)
     // std::cout << KNRM;
 
     std::ostringstream pos;
-    pos << KBOLD;
+//    pos << KBOLD;
     pos << "total  :" << uTotal << std::endl;
     pos << "success:" << (uTotal-uFailed) << std::endl;
     pos << "failed :" << uFailed << std::endl;
-    pos << KNRM;
+//    pos << KNRM;
 
     utprint("%s", pos.str().c_str());
     //    exec::Statistics::Childs const& lst = pSuit->getChilds();

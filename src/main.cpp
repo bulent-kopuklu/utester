@@ -79,11 +79,11 @@ int start(int argc, char* argv[])
     }
     catch (std::exception& e)
     {
-        std::cerr << std::endl << KRED << KBOLD << "error -> " << e.what() << KNRM << std::endl << std::endl;
+        uterror("error -> %s", e.what());
     }
     catch (...) 
     {
-        std::cerr << std::endl << KRED << KBOLD << "undefined error " << KNRM << std::endl << std::endl;
+        uterror("error -> undefined error");
     }
 
 
