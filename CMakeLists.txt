@@ -31,7 +31,11 @@ add_library(
     )
 
 target_include_directories(utester PUBLIC include)
-#target_link_libraries(utester)
+if (DEFINED ANDROID)
+    find_library(android_log log)
+    target_link_libraries(utester ${android_log})
+endif()
+
 
 set_target_properties(utester PROPERTIES PUBLIC_HEADER include/utester.h)
 
