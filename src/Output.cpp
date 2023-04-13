@@ -38,42 +38,58 @@ void title(std::string const& strName, char ch = '-')
 {
     uint len = (80 - strName.length()) / 2;
     std::string s(len, ch);
-    std::cout << s;
+//    std::cout << s;
+    lprint("%s", s.c_str());
 
     if (!strName.empty())
     {
-         std::cout << strName;
+//         std::cout << strName;
+         lprint("%s", strName.c_str());
     }
 
-    std::cout << s;
+//    std::cout << s;
+    lprint("%s", s.c_str());
     uint len2 = (len*2) + strName.length();
     if (len2 < len)
     {
         std::string s2(len2, ch);
-        std::cout << s2;
+//        std::cout << s2;
+        lprint("%s", s2.c_str());
     }
 
-    std::cout << std::endl;
+//    std::cout << std::endl;
+    lprint("\n");
 }
 
 void stat(exec::Statistics* ps, bool fIsBold = false)
 {
     if (!ps->isSuccess())
     {
-        std::cout << KRED;
+    //    std::cout << KRED;
+        lprint("%s", KRED);
     }
 
     if (fIsBold)
     {
-        std::cout << KBOLD;
+        // std::cout << KBOLD;
+        lprint("%s", KBOLD);
     }
 
-    std::cout << std::setw(53) << std::left << name(ps->getName()) << " ";
-    std::cout << std::setw(8) << std::left << ((float)ps->getCtorTime() / 1000.0) << " ";
-    std::cout << std::setw(8) << std::left << ((float)ps->getDtorTime() / 10000.0) << " ";
-    std::cout << std::setw(8) << std::left << ((float)ps->getRunTime() / 1000.0);
+    // std::cout << std::setw(53) << std::left << name(ps->getName()) << " ";
+    // std::cout << std::setw(8) << std::left << ((float)ps->getCtorTime() / 1000.0) << " ";
+    // std::cout << std::setw(8) << std::left << ((float)ps->getDtorTime() / 10000.0) << " ";
+    // std::cout << std::setw(8) << std::left << ((float)ps->getRunTime() / 1000.0);
 
-    std::cout << KNRM << std::endl;
+    lprint("%53s %8f %8f %8f", 
+        name(ps->getName().c_str()),
+        ((float)ps->getCtorTime() / 1000.0),
+        ((float)ps->getDtorTime() / 10000.0),
+        ((float)ps->getRunTime() / 1000.0)
+        );
+
+//    std::cout << KNRM << std::endl;
+    lprint("%s\n", KNRM);
+
 }
 
 static bool isscope(exec::Statistics* pStat)
@@ -132,9 +148,13 @@ TestResult sstat(ScopeExecuter* pScope)
     title("");
 
     stat(pScope, true);
-    std::cout << "total  :" << t << std::endl;
-    std::cout << "success:" << (t-f) << std::endl;
-    std::cout << "failed :" << f << std::endl;
+    // std::cout << "total  :" << t << std::endl;
+    // std::cout << "success:" << (t-f) << std::endl;
+    // std::cout << "failed :" << f << std::endl;
+
+    lprint("total:%d\n", t);
+    lprint("success:%d\n", (t-f));
+    lprint("failed:%d\n", f); 
 
     return TestResult(t, f);
 }
@@ -156,11 +176,18 @@ void printScopeStat(ScopeExecuter* pSuit)
     title("", '=');
 
     stat(pSuit, true);
-    std::cout << KBOLD;
-    std::cout << "total  :" << uTotal << std::endl;
-    std::cout << "success:" << (uTotal-uFailed) << std::endl;
-    std::cout << "failed :" << uFailed << std::endl;
-    std::cout << KNRM;
+    // std::cout << KBOLD;
+    // std::cout << "total  :" << uTotal << std::endl;
+    // std::cout << "success:" << (uTotal-uFailed) << std::endl;
+    // std::cout << "failed :" << uFailed << std::endl;
+    // std::cout << KNRM;
+
+    lprint("KBOLD");
+    lprint("total:%d\n", uTotal);
+    lprint("success:%d\n", (uTotal-uFailed));
+    lprint("failed:%d\n", uFailed); 
+    lprint("KNORM");
+
 
     //    exec::Statistics::Childs const& lst = pSuit->getChilds();
 //    exec::Statistics::Childs::const_iterator its;

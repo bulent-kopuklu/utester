@@ -48,7 +48,8 @@ void TestExecuter::run()
 
     long lBegin = util::tick();
 
-    std::cout << KACCORD;
+    // std::cout << KACCORD;
+    lprint(KACCORD);
     std::string strError;
 
     try
@@ -60,7 +61,8 @@ void TestExecuter::run()
         strError = e.what();
     }
 
-    std::cout << KNRM;
+    // std::cout << KNRM;
+    lprint(KNRM);
     setRunTime(util::timespan(lBegin));
     if (!strError.empty())
     {

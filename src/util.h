@@ -36,8 +36,6 @@
 #define KCYN  "\x1B[36m"
 #define KWHT  "\x1B[37m"
 
-#define tlog(__x__) \
-    std::cout << (((std::ostringstream &)(std::ostringstream().seekp(0, std::ios_base::cur) << __x__)).str()) << std::endl
 
 #define tbegin0(_n) \
     tlog(KBOLD << KBLU << _n)

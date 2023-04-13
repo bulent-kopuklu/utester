@@ -27,6 +27,22 @@
 #include <vector>
 #include <map>
 
+#if defined(ANDROID)
+#   include <android/log.h>
+#   define LOG_TAG "mwg"
+#   define lprint(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
+#   define lerror(...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, __VA_ARGS__)
+#else
+#   define LOG_TAG "mwg"
+#   define lprint(...) fprintf(stdout, __VA_ARGS__)
+#   define lerror(...) fprintf(stderr, __VA_ARGS__)
+#endif
+
+#define tlog(__x__) \
+    lprint("%s\n", (((std::ostringstream &)(std::ostringstream().seekp(0, std::ios_base::cur) << __x__)).str()).c_str())
+    // std::cout << (((std::ostringstream &)(std::ostringstream().seekp(0, std::ios_base::cur) << __x__)).str()) << std::endl
+
+
 namespace utester {
 
 class Object {

@@ -28,7 +28,8 @@ namespace utester {
 
 void signalhandler(int sig)
 {
-    std::cout << "signal -> " << sig << std::endl;
+//    std::cout << "signal -> " << sig << std::endl;
+    lerror("signal: %d\n", sig);
 }
 
 void usage()
