@@ -31,7 +31,7 @@
 
 #if defined(ANDROID)
 #   include <android/log.h>
-#   define LOG_TAG "mwg"
+#   define LOG_TAG "utester"
 #   define utprint(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
 #   define uterror(...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, __VA_ARGS__)
 #else
